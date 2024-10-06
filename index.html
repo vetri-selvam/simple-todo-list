@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>TodoList App</title>
+  </head>
+  <body>
+    <h2>Tasks</h2>
+    <ul id="taskList"></ul>
+
+    <div>
+      <input id="addTask" type="text" />
+      <button id="Submit">Add Task</button>
+    </div>
+
+    <h2>Completed</h2>
+    <ul id="doneList"></ul>
+  </body>
+  <script>
+    let task = document.getElementById("addTask");
+
+    let submit = document.getElementById("Submit");
+
+    let taskList = document.getElementById("taskList");
+
+    let doneList = document.getElementById("doneList");
+
+    let list = new Array();
+    submit.addEventListener("click", (event) => {
+      if (addTask.value != "") {
+
+        list.push(task.value);
+        taskList.innerHTML +=
+          '<li id="' +(list.length - 1) +'"><button onClick="complete('+(list.length - 1)+')">' // These brackets are very tricky. Need to give correct. Eg: complete('+(list.length - 1)+')
+            + task.value +
+          "</button></li>";
+
+        addTask.value = "";
+      }
+    });
+
+    function complete (id){
+        doneList.innerHTML += '<li>'+list[id]+'</li>';
+        document.getElementById(id).style.display = "none";        // notice it is getElementById(id) and not getElementById('id')
+    }
+
+  </script>
+</html>
